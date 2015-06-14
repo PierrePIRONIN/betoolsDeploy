@@ -32,11 +32,11 @@ RUN set -x \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /var/lib/mongodb \
  && mv /etc/mongod.conf /etc/mongod.conf.orig
+
+VOLUME ["/data/db","/var/log/mongodb"]
  
 RUN mkdir -p /data/db && chown -R mongodb:mongodb /data/db
-RUN mkdir -p /var/log/mongodb && chown -R mongodb:mongodb /var/log/mongodb
-
-VOLUME ["/data/db","/var/log/mongodb/"]
+RUN chown -R mongodb:mongodb /var/log/mongodb 
 
 COPY ./config/docker-entrypoint.sh /tmp/entrypoint.sh
 COPY ./config/mongodb.conf /etc/mongod.conf
