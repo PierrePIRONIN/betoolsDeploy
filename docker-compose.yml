@@ -1,14 +1,14 @@
 ubuntubase:
     build: ./ubuntu-base
-#betools:
-#    build: ./betools
-#    expose:
-#        - "3100"
-#    volumes:
-#        - ./logs/betools:/var/log/betools/
-#        - ./betools/app/:/var/www/html/
-#    links:
-#        - mongodb:db
+betools:
+    build: ./betools
+    expose:
+        - "3000"
+    volumes:
+        - ./betools/logs:/var/log/betools/
+        - ./betools/app/:/var/www/html/
+    links:
+        - mongodb:db
 mongodb:
     build: ./mongodb
     expose:
