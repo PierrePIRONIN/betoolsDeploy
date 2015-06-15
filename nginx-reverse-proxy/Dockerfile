@@ -22,10 +22,5 @@ COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/config.sh /etc/nginx/config.sh
 RUN ["chmod", "+x", "/etc/nginx/config.sh"]
 
-# Copy default webpage
-RUN rm /var/www/html/index.nginx-debian.html
-COPY html/index.html /var/www/html/index.html
-COPY html/robots.txt /var/www/html/robots.txt
-
 # Define default command.
 CMD /etc/nginx/config.sh && nginx

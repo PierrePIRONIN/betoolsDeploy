@@ -16,14 +16,15 @@ mongodb:
     volumes:
         - ./mongodb/logs/:/var/log/mongodb/
         - ./mongodb/db:/data/db
-#nginxreverseproxy:
-#    build: ./nginx-reverse-proxy
-#    expose:
-#        - "80"
-#        - "443"
-#    links:
-#        - betools:app
-#    ports:
-#        - "80:80"
-#    volumes:
-#        - ./logs/:/var/log/nginx/
+nginxreverseproxy:
+    build: ./nginx-reverse-proxy
+    expose:
+        - "80"
+        - "443"
+    links:
+        - betools
+    ports:
+        - "80:80"
+    volumes:
+        - ./nginx-reverse-proxy/logs/:/var/log/nginx/
+        - ./betools/app/:/var/www/html/
